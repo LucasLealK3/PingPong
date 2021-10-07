@@ -1,12 +1,10 @@
-const { text } = require("stream/consumers");
-
 const player1 = new Player();
 player1.controller = 'mouse';
 const player2 = new Player();
 const bola = new Bola();
 
 function setup() {
-  createCanvas(innerWidth, innerHeight);
+  createCanvas(windowWidth, windowHeight);
   resetGame();
 }
 
