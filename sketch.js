@@ -14,7 +14,7 @@ function resetGame(){
   player1.pos.y = 180;
   player2.pos.y = 180;
   bola.pos.x = (bola.direcao === 1) ? (player1.pos.x + player1.size.w) : player2.pos.x;
-  bola.pos.y = 200;
+  bola.pos.y = height/2;
   bola.deslocamento = 3;
 }
 
