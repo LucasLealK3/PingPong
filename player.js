@@ -3,6 +3,7 @@ class Player {
       this.pos = {x:0, y:0};
       this.size = {w:10, h:50};
       this.pontuacao = 0;
+      this.nome = 'CPU';
       this.controller = 'cpu';
       this.direcao = 1;
     }

@@ -1,11 +1,26 @@
+let input, button;
+
 const player1 = new Player();
 player1.controller = 'mouse';
+player1.nome = 'Player1';
 const player2 = new Player();
 const bola = new Bola();
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  input = createInput();
+  input.position(width/2.5, height/2);
+
+  button = createButton('submit');
+  button.position(input.x + input.width, height/2);
+  button.mousePressed(greet);  
+
   resetGame();
+}
+
+function greet() {
+  player1.nome = input.value();
+  input.value('');
 }
 
 function resetGame(){
@@ -34,8 +49,17 @@ function verificaPontuacao(){
 function mostrarPontuacao() {
   fill('pink');
   textSize(48);
-  text(player1.pontuacao, (width/2) / 2, 50);
+  text(player1.pontuacao, (width/4), 50);
   text(player2.pontuacao, (width/2) + (width/4), 50);
+}
+
+
+
+function mostrarNome() {
+  fill('pink');
+  textSize(48);
+  text(player1.nome, 0, 50);
+  text(player2.nome, (width/2), 50);
 }
 
 function teveColisaoObjetos(obj1, obj2) {
@@ -80,6 +104,7 @@ function verificaColisao(){
 function draw() {
   background("black");
 
+
   //Configurando o meio de campo
   strokeWeight(5);
   stroke("white");
@@ -101,4 +126,5 @@ function draw() {
   bola.show();
   
   mostrarPontuacao();
+  mostrarNome();
 }
