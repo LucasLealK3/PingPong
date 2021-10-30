@@ -30,27 +30,45 @@ function resetGame(){
   player2.pos.y = 180;
   bola.pos.x = (bola.direcao === 1) ? (player1.pos.x + player1.size.w) : player2.pos.x;
   bola.pos.y = height/2;
-  bola.deslocamento = 3;
 }
 
 function verificaPontuacao(){
   if(bola.pos.x > width){
     console.log('player 1 fez o ponto');
     player1.pontuacao++;
+    aumentaDificuldade()
     resetGame();
   }
   
   if(bola.pos.x + bola.size.w < 0){
     player2.pontuacao++;
+    aumentaDificuldade()
     resetGame()
+  }
+}
+
+function aumentaDificuldade(){
+
+  if (player1.pontuacao >= player2.pontuacao + 20){
+    bola.deslocamento = 15;
+  } else if (player1.pontuacao >= player2.pontuacao + 15){
+    bola.deslocamento = 12.5;
+  } else if (player1.pontuacao >= player2.pontuacao + 10){
+    bola.deslocamento = 10;
+  } else if (player1.pontuacao >= player2.pontuacao + 5){
+    bola.deslocamento = 7.5;
+  } else if (player1.pontuacao >= player2.pontuacao){
+    bola.deslocamento = 5;
+  } else {
+    bola.deslocamento = 2.5;
   }
 }
 
 function mostrarPontuacao() {
   fill('pink');
   textSize(48);
-  text(player1.pontuacao, (width/4), 50);
-  text(player2.pontuacao, (width/2) + (width/4), 50);
+  text(player1.pontuacao, (width/2) - 75, 50);
+  text(player2.pontuacao, (width/2) + 50, 50);
 }
 
 
@@ -58,8 +76,8 @@ function mostrarPontuacao() {
 function mostrarNome() {
   fill('pink');
   textSize(48);
-  text(player1.nome, 0, 50);
-  text(player2.nome, (width/2), 50);
+  text(player1.nome, (width/2) - 400, 50);
+  text(player2.nome, (width/2) + 200, 50);
 }
 
 function teveColisaoObjetos(obj1, obj2) {

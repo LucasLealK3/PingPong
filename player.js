@@ -3,7 +3,7 @@ class Player {
       this.pos = {x:0, y:0};
       this.size = {w:10, h:50};
       this.pontuacao = 0;
-      this.nome = 'CPU';
+      this.nome = 'CPU:';
       this.controller = 'cpu';
       this.direcao = 1;
     }
@@ -20,7 +20,7 @@ class Player {
           this.direcao = -1;
         }
         this.pos.y += (bola.deslocamento * random(0.9,1)) * this.direcao;
-      }
+        }
     }
     
     show() {
